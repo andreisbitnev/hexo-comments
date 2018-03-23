@@ -1,14 +1,10 @@
 module.exports = {
-    domain: 'example.com',
     port: 4000,
     database: 'main.db',
-    templates: {
-        container: "container.ejs",
-        comments: "comments.ejs",
-        comment: "comment.js"
-    },
-    commentDefault: {
-        name: "Guest"
+    errorLogs: 'errors.log',
+    defaults: {
+        name: "Guest",
+        providers: []
     },
     auth: {
         secret: 'secret key for session / any random string',
@@ -19,8 +15,11 @@ module.exports = {
         facebook: {
             clientID: undefined,
             clientSecret: undefined
-        },
-        providers: []
+        }
     },
-    errorLogs: 'errors.log',
+    templates: {
+        container: "container.ejs",
+        comments: "comments.ejs",
+        comment: "comment.js"
+    }
 };

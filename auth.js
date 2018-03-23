@@ -17,7 +17,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     secret: config.auth.secret,
-    cookie: { domain: config.domain },
     store: new SQLiteStore({ db: config.database })
 }));
 
@@ -46,7 +45,7 @@ if(config.auth.facebook.clientID && config.auth.facebook.clientSecret) {
     passport.use(new FacebookStrategy({
         clientID: config.auth.facebook.clientID,
         clientSecret: config.auth.facebook.clientSecret,
-        callbackURL: `http://${config.domain}/auth/facebook/callback`
+        callbackURL: `/auth/facebook/callback`
       },
       function(accessToken, refreshToken, profile, done) {
         userModule.getUser(profile).then(user => {
@@ -61,7 +60,7 @@ if(config.auth.google.clientID && config.auth.google.clientSecret) {
     passport.use(new GoogleStrategy({
         clientID: config.auth.google.clientID,
         clientSecret: config.auth.google.clientSecret,
-        callbackURL: `http://${config.domain}/auth/google/callback`
+        callbackURL: `/auth/google/callback`
       },
       function(accessToken, refreshToken, profile, done) {
         userModule.getUser(profile).then(user => {

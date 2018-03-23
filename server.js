@@ -29,7 +29,7 @@ if(config.auth.facebook.clientID && config.auth.facebook.clientSecret ||
 
 app.get('/comments/:postName', [
     getComments(db, log),
-    renderTemplates(templates, config.auth.providers)
+    renderTemplates(templates, config.defaults)
 ]);
 
 app.post('/comments/:postName', [

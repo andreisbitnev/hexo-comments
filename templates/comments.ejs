@@ -1,30 +1,30 @@
 <% data.comments.forEach((comment) => { %>
-        <li class="cmt-comment">
-            <div class="cmt-content">
-                <div class="cmt-row">
-                    <div class="cmt-name"><%= comment.name %></div>
-                    <div class="cmt-date"><%= moment(comment.timestamp).fromNow() %></div>
-                </div>
-                <div class="cmt-row">
-                    <div class="cmt-text"><%= comment.text %></div>
-                </div>
-                <div class="cmt-row">
-                    <span class="cmt-reply" onclick="cmt.toggle(<%= comment.timestamp %>);">Reply</span>
-                </div>
-                <div class="cmt-row">
-                    <div class="cmt-comment-box hidden" data-cmt-timestamp="<%= comment.timestamp %>">
-                        <form onsubmit="cmt.submitComment(event);">
-                            <textarea name="text"></textarea>
-                            <input type="hidden" name="position" value="<%= data.position + '/' + comment.timestamp.toString() %>">
-                            <div class="cmt-buttons">
-                                <button type="submit" class="btn btn-primary cmt-btn">Post as <%= user || 'guest' %></button>
-                            </div>
-                        </form>
-                    </div>
-                    <ul class="cmt-comments">
-                        <%- getHtml({comments: comment.comments, position: data.position + '/' + comment.timestamp.toString()}, templates.comments) %>
-                    </ul>
-                </div>
+    <li class="cmt-comment">
+        <div class="cmt-content">
+            <div class="cmt-row">
+                <div class="cmt-default cmt-name"><%= comment.name %></div>
+                <div class="cmt-default cmt-date"><%= moment(comment.timestamp).fromNow() %></div>
             </div>
-        </li>
+            <div class="cmt-row">
+                <div class="cmt-default cmt-text"><%= comment.text %></div>
+            </div>
+            <div class="cmt-row">
+                <span class="cmt-default cmt-reply" onclick="cmt.toggle(<%= comment.timestamp %>);">Reply</span>
+            </div>
+            <div class="cmt-row">
+                <div class="cmt-comment-box hidden" data-cmt-timestamp="<%= comment.timestamp %>">
+                    <form onsubmit="cmt.submitComment(event);">
+                        <textarea name="text"></textarea>
+                        <input type="hidden" name="position" value="<%= data.position + '/' + comment.timestamp.toString() %>">
+                        <div class="cmt-buttons">
+                            <button type="submit" class="cmt-btn-primary cmt-btn">Post as <%= user || 'guest' %></button>
+                        </div>
+                    </form>
+                </div>
+                <ul class="cmt-comments">
+                    <%- getHtml({comments: comment.comments, position: data.position + '/' + comment.timestamp.toString()}, templates.comments) %>
+                </ul>
+            </div>
+        </div>
+    </li>
 <% }) %>
