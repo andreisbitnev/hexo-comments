@@ -17,7 +17,7 @@
                         <textarea name="text"></textarea>
                         <input type="hidden" name="position" value="<%= data.position + '/' + comment.timestamp.toString() %>">
                         <div class="cmt-buttons">
-                            <button type="submit" class="cmt-btn-primary cmt-btn">Post as <%= user || 'guest' %></button>
+                            <button type="submit" class="cmt-btn-primary cmt-btn">Post as <%= user && user.display_name || defaults.name %></button>
                         </div>
                     </form>
                 </div>

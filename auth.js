@@ -41,7 +41,7 @@ passport.serializeUser((user, done) => {
 });
 
 if(config.auth.facebook.clientID && config.auth.facebook.clientSecret) {
-    config.auth.providers.push('facebook');
+    config.defaults.providers.push('facebook');
     passport.use(new FacebookStrategy({
         clientID: config.auth.facebook.clientID,
         clientSecret: config.auth.facebook.clientSecret,
@@ -56,7 +56,7 @@ if(config.auth.facebook.clientID && config.auth.facebook.clientSecret) {
 }
 
 if(config.auth.google.clientID && config.auth.google.clientSecret) {
-    config.auth.providers.push('google');
+    config.defaults.providers.push('google');
     passport.use(new GoogleStrategy({
         clientID: config.auth.google.clientID,
         clientSecret: config.auth.google.clientSecret,
