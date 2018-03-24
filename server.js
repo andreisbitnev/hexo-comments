@@ -1,3 +1,5 @@
+const http = require('http');
+const https = require('https');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -40,6 +42,20 @@ app.post('/comments/:postName', [
 
 app.use(errorHandling(log));
 
-app.listen(config.port, function () {
-  console.log(`server running on port ${config.port}`);
-}); 
+if(config.port) {
+    http.createServer(app).listen(config.port, () => {
+        console.log(`server running on port ${config.port}`);
+    });
+}
+if(config.securePort) {
+    let credentials = {
+        key: fs.readFileSync(config.encrypt.key),
+        cert: fs.readFileSync(config.encrypt.cert)
+    }
+    if (config.encrypt.passphrase) {
+        credentials.passphrase = config.encrypt.passphrase
+    }
+    https.createServer(credentials, app).listen(config.securePort, () => {
+        console.log(`secure server running on port ${config.securePort}`);
+    });
+}
