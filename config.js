@@ -7,9 +7,9 @@ module.exports = {
         name: "Guest",
         providers: []
     },
-    encrypt: {
-        key: 'encrypt/key.pem',
-        cert: 'encrypt/cert.pem',
+    ssl: {
+        key: 'key.pem',
+        cert: 'cert.pem',
         passphrase: undefined
     },
     auth: {

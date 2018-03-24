@@ -49,11 +49,11 @@ if(config.port) {
 }
 if(config.securePort) {
     let credentials = {
-        key: fs.readFileSync(config.encrypt.key),
-        cert: fs.readFileSync(config.encrypt.cert)
+        key: fs.readFileSync(config.ssl.key),
+        cert: fs.readFileSync(config.ssl.cert)
     }
-    if (config.encrypt.passphrase) {
-        credentials.passphrase = config.encrypt.passphrase
+    if (config.ssl.passphrase) {
+        credentials.passphrase = config.ssl.passphrase
     }
     https.createServer(credentials, app).listen(config.securePort, () => {
         console.log(`secure server running on port ${config.securePort}`);

@@ -8,8 +8,8 @@ On the other hand, the basic functionality is easy to setup and use with just a 
 
 ## Step-by-step
 In the next section there is a guide on the project setup as well as a quick description of the project configuration. But some other topics like <b>facebook</b> or <b>google</b> authentication are not explained in detail. Since both facebook and google apis change  very frequently, it is sometimes difficult to find up to date info on setting them up. Here are some links to step-by step guides on those particular topics:<br>
-[User authentication with google]()<br>
-[User authentication with facebook]()<br>
+[Creating Google Sign-In project]()<br>
+[Creating Facebook Sign-in app]()<br>
 
 
 ## Setup
@@ -55,6 +55,7 @@ Open up config.js file, which is the main configuration file<br>
 
 ### Basic configuration:
 `port: 4000` - port on which the blog will be served<br>
+`securePort: undefined` - port for secure connection. By default set to undefined. To provide the secure connection, ssl key, cert and optionally passphrase should be provided in the ssl section of this file<br>
 `database: 'main.db'` - the name of the databse file<br>
 `errorLogs: 'error.log'` - the file, which will store the error logs<br>
 
@@ -63,12 +64,19 @@ Open up config.js file, which is the main configuration file<br>
 `defaults.name: Guest` - the default name to be displayed for users, who didn't log in.<br>
 `defaults.providers: []` - the array of provider names currently available. It should be left as an empty array, it gets populated dynamically, if id and secret values for either google or chrome are provided in the auth object<br>
 
+### SSL config
+`ssl: {...}` - holds configuration for secure connection<br>
+`key: 'key.pem'` - path to the key file<br>
+`cert: 'cert.pem'` - path to the cert file<br>
+`passphrase: undefined` - passphrase specified during key creation, if any.<br>
+> Tip: to create self signed certificate for 365 days with openssl run `openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365`. Then just copy the files to the projects root directory.
+
 ### Authentication
 `auth: {...}` - holds the variables used in the auth module for user authentication. After this is set up users will be able to login with google or facebook before leaving their comments<br>
 `auth.secret` - string used in session creation. Just create some random string and insert it here<br>
-`auth.google: {...}` - object holds the id and secret values for google authentication app. To get those values, you need to configure a new google project. 
-`auth.facebook: {...}` - object holds the id and secret values for facebook authentication app. To get those values, you need to configure a new facebook app.
-Facebool will ask you for the "Valid OAuth Redirect URIs", it should be set to `http://yourdomain.com/auth/facebook/callback`, for the initial setup it should be `http://localhost:4000/auth/facebook/callback`
+`auth.google: {...}` - object holds the id and secret values for google authentication app. To get those values, you need to configure a new google project. Here\`s a step-by-step guide how to do it [Google Sign-In project]()<br>
+`auth.facebook: {...}` - object holds the id and secret values for facebook authentication app. To get those values, you need to configure a new facebook app. Here\`s a step-by-step guide how to do it [Facebook Sign-In app]()<br>
+<b>Important:</b> All facebook apps created from March 2018 will have the <b>Enforce HTTPS</b> set. Which means, you will not be able to sign-in with facebook without secure connection. So both <b>SSL</b> and <b>securePort</b> will have to be configured to use this feature.
 
 ### Templates
 `templates: {...}` - holds the names of the templates used to render comments. All the template files should be stored in the ~/templates directory<br>
