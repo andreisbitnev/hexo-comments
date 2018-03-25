@@ -7,10 +7,9 @@ Since hexo is mostly used by designers and developers, the extension was designe
 On the other hand, the basic functionality is easy to setup and use with just a few steps.
 
 ## Step-by-step
-In the next section there is a guide on the project setup as well as a quick description of the project configuration. But some other topics like <b>facebook</b> or <b>google</b> authentication are not explained in detail. Since both facebook and google apis change  very frequently, it is sometimes difficult to find up to date info on setting them up. Here are some links to step-by step guides on those particular topics:<br>
-[Creating Google Sign-In project]()<br>
-[Creating Facebook Sign-in app]()<br>
-
+In the next section there is a guide on the project setup as well as a quick description of the project configuration. But some other topics like <b>facebook</b> or <b>google</b> authentication are not explained in detail. Since both facebook and google apis change very frequently, it is sometimes difficult to find up to date info on setting them up. Here are some links to step-by step guides on those particular topics:<br>
+[Creating Google Sign-In project](http://andreisbitnev.com/2018/03/23/Google-Sign-In-project/)<br>
+[Creating Facebook Sign-in app](http://andreisbitnev.com/2018/03/23/facebook-authentication-app/)<br>
 
 ## Setup
 
@@ -74,10 +73,11 @@ Open up config.js file, which is the main configuration file<br>
 ### Authentication
 `auth: {...}` - holds the variables used in the auth module for user authentication. After this is set up users will be able to login with google or facebook before leaving their comments<br>
 `auth.secret` - string used in session creation. Just create some random string and insert it here<br>
-`auth.google: {...}` - object holds the id and secret values for google authentication app. To get those values, you need to configure a new google project. Here\`s a step-by-step guide how to do it [Google Sign-In project]()<br>
-`auth.facebook: {...}` - object holds the id and secret values for facebook authentication app. To get those values, you need to configure a new facebook app. Here\`s a step-by-step guide how to do it [Facebook Sign-In app]()<br>
+`auth.google: {...}` - object holds the id and secret values for google authentication app. To get those values, you need to configure a new google project. Here\`s a step-by-step guide how to do it [Google Sign-In project](http://andreisbitnev.com/2018/03/23/Google-Sign-In-project/)<br>
+>Tip: When creating a google sign in project, specify the <b>"Authorised redirect URIs"</b> as `http://localhost:4000/auth/google/callback`, where 4000 is the server port.
+`auth.facebook: {...}` - object holds the id and secret values for facebook authentication app. To get those values, you need to configure a new facebook app. Here\`s a step-by-step guide how to do it [Facebook Sign-In app](http://andreisbitnev.com/2018/03/23/facebook-authentication-app/)<br>
 <b>Important:</b> All facebook apps created from March 2018 will have the <b>Enforce HTTPS</b> set. Which means, you will not be able to sign-in with facebook without secure connection. So both <b>SSL</b> and <b>securePort</b> will have to be configured to use this feature.
-
+>Tip: When creating a facebook sign in app, specify the <b>"Valid OAuth Redirect URIs"</b> as `https://localhost:5555/auth/facebook/callback`, where 5555 is the secure server port.
 ### Templates
 `templates: {...}` - holds the names of the templates used to render comments. All the template files should be stored in the ~/templates directory<br>
 `templates.container: "container.ejs"` - .ejs template file for the container. It stores the css styles used for comments area styling and inserts the comments.ejs template.<br>
