@@ -8,7 +8,7 @@ On the other hand, the basic functionality is easy to setup and use with just a 
 
 ## Step-by-step
 In the next section there is a guide on the project setup as well as a quick description of the project configuration. But some other topics like <b>facebook</b> or <b>google</b> authentication are not explained in detail. Since both facebook and google apis change very frequently, it is sometimes difficult to find up to date info on setting them up. Here are some links to step-by step guides on those particular topics:<br>
-[Setting up hexo blog with comments](http://andreisbitnev.com/2018/03/24/hexo-comments/)<br>
+[Setting up hexo blog with comments](http://andreisbitnev.com/2018/03/25/hexo-comments/)<br>
 [Creating Google Sign-In project](http://andreisbitnev.com/2018/03/23/Google-Sign-In-project/)<br>
 [Creating Facebook Sign-in app](http://andreisbitnev.com/2018/03/23/facebook-authentication-app/)<br>
 
