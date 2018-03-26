@@ -75,9 +75,11 @@ Open up config.js file, which is the main configuration file<br>
 `auth.secret` - string used in session creation. Just create some random string and insert it here<br>
 `auth.google: {...}` - object holds the id and secret values for google authentication app. To get those values, you need to configure a new google project. Here\`s a step-by-step guide how to do it [Google Sign-In project](http://andreisbitnev.com/2018/03/23/Google-Sign-In-project/)<br>
 >Tip: When creating a google sign in project, specify the <b>"Authorised redirect URIs"</b> as `http://localhost:4000/auth/google/callback`, where 4000 is the server port.
+
 `auth.facebook: {...}` - object holds the id and secret values for facebook authentication app. To get those values, you need to configure a new facebook app. Here\`s a step-by-step guide how to do it [Facebook Sign-In app](http://andreisbitnev.com/2018/03/23/facebook-authentication-app/)<br>
 <b>Important:</b> All facebook apps created from March 2018 will have the <b>Enforce HTTPS</b> set. Which means, you will not be able to sign-in with facebook without secure connection. So both <b>SSL</b> and <b>securePort</b> will have to be configured to use this feature.
 >Tip: When creating a facebook sign in app, specify the <b>"Valid OAuth Redirect URIs"</b> as `https://localhost:5555/auth/facebook/callback`, where 5555 is the secure server port.
+
 ### Templates
 `templates: {...}` - holds the names of the templates used to render comments. All the template files should be stored in the ~/templates directory<br>
 `templates.container: "container.ejs"` - .ejs template file for the container. It stores the css styles used for comments area styling and inserts the comments.ejs template.<br>
